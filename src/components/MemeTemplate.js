@@ -1,6 +1,7 @@
 import React from 'react'
 import { Card, CardActionArea, CardActions, CardContent, CardMedia, Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import { Link } from 'react-router-dom';
 const useStyles = makeStyles((theme) => ({
     root: {
             backgroundColor: theme.palette.background.paper,
@@ -25,6 +26,7 @@ function MemeTemplate(props) {
     return (
         <Grid item xs={12} sm={6} md={4} lg={3}>
             <Card className={classes.root}>
+                <Link to= {"/"+props.id+"/"+props.boxes}>
                 <CardActionArea>
                     <CardActions>
                         <CardContent className={`${classes.imgContainer} ${classes.center}`}>
@@ -32,6 +34,7 @@ function MemeTemplate(props) {
                         </CardContent>
                     </CardActions>
                 </CardActionArea>
+                </Link>
             </Card>
         </Grid>
     )
