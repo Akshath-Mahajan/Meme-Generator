@@ -3,7 +3,6 @@ import React from 'react';
 import Header from './components/Header'
 import MemeTemplateGrid from './components/MemeTemplateGrid';
 import theme from './Theme'
-
 function App() {
 	return (
 	<ThemeProvider theme={theme}>

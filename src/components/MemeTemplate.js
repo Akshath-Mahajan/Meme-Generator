@@ -10,10 +10,14 @@ const useStyles = makeStyles((theme) => ({
         marginLeft:'auto', 
         marginRight:'auto'
     },
-    img: {
+    imgContainer: {
         height: '200px', 
-        width:'200px'
+        width:'200px',
     },
+    img:{
+        height:'100%',
+        width: '100%',
+    }
   })
 );
 function MemeTemplate(props) {
@@ -23,7 +27,7 @@ function MemeTemplate(props) {
             <Card className={classes.root}>
                 <CardActionArea>
                     <CardActions>
-                        <CardContent className={classes.center}>
+                        <CardContent className={`${classes.imgContainer} ${classes.center}`}>
                             <CardMedia className={`${classes.img} ${classes.center}`} image={props.imgUrl}/>
                         </CardContent>
                     </CardActions>
