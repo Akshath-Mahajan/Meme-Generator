@@ -3,6 +3,8 @@ import React, {useState} from 'react'
 import { useParams } from 'react-router-dom'
 import MemeInput from './MemeInput'
 import axios from 'axios'
+import Loading from './Loading'
+import LazyLoad from 'react-lazyload';
 const useStyles = makeStyles((theme) => ({
     root: {
             backgroundColor: theme.palette.background.default,
@@ -55,7 +57,9 @@ function MemeCreate() {
     }else{
         output =
             <div className={classes.imgContainer}>
-                <img src={url} style={{marginLeft:'auto', marginRight:'auto'}} alt="Please refresh the page" />
+                <LazyLoad placeholder={<Loading />}>
+                    <img src={url} style={{marginLeft:'auto', marginRight:'auto'}} alt="Please refresh the page" />
+                </LazyLoad>
             </div>
     }
     return (
