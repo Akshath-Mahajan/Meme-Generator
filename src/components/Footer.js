@@ -8,18 +8,15 @@ const useStyles = makeStyles((theme) => ({
             paddingBottom: 20
         }
 }))
-function Header() {
+function Footer() {
     const classes = useStyles()
     return (
         <div className={classes.root}>
-            <Typography align='center' variant="h1">
-                Meme Creator
-            </Typography>
-            <Typography align='center' variant="h2">
-                Create your own memes!
+            <Typography align='center' variant="subtitle1">
+                Created by Akshath Mahajan. Hope you come up with some amazing memes!
             </Typography>
         </div>
     )
 }
 
-export default Header
+export default Footer

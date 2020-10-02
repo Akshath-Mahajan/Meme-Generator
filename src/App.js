@@ -4,9 +4,13 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import MemeCreate from './components/MemeCreate';
 import MemeTemplateGrid from './components/MemeTemplateGrid';
 import theme from './Theme'
+import Header from './components/Header'
+import Footer from './components/Footer'
+import './index.css'
 function App() {
 	return (
 	<ThemeProvider theme={theme}>
+		<Header />
 		<BrowserRouter>
 			<Route exact path="/">
 				<MemeTemplateGrid />
@@ -15,6 +19,7 @@ function App() {
 				<MemeCreate />
 			</Route>
 		</BrowserRouter>
+		<Footer />
 	</ThemeProvider>
 	);
 }

@@ -10,7 +10,7 @@ const useStyles = makeStyles((theme)=>({
 function MemeTemplateGrid() {
     const [data, setData] = useState([])
     const [currentPage, setCurrentPage] = useState(1);
-    const [memesPerPage, setMemesPerPage] = useState(10);
+    const [memesPerPage] = useState(10);
     const classes = useStyles()
     useEffect(()=>{
         fetch("https://api.imgflip.com/get_memes")
@@ -34,6 +34,8 @@ function MemeTemplateGrid() {
             breakClassName={"break-me"}
             containerClassName={"pagination"}
             subContainerClassName={"pages pagination"}
+            marginPagesDisplayed={2}
+            pageRangeDisplayed={1}
             onPageChange={handlePageClick}
             activeClassName={"active"}
             />

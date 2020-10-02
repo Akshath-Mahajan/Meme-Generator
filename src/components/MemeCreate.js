@@ -8,14 +8,8 @@ import LazyLoad from 'react-lazyload';
 const useStyles = makeStyles((theme) => ({
     root: {
             backgroundColor: theme.palette.background.default,
-            height:'100vh'
+            flex: '1',
     },
-    imgContainer:{
-        width:'100%',
-        display:'flex',
-        justifyContent:'center',
-        alignContent:'center'
-    }
   })
 );
 
@@ -46,25 +40,25 @@ function MemeCreate() {
     for(let i = 0; i < parseInt(boxes); i++){arr.push(<MemeInput key={i} id={i} callback={setTextVals} />)}
     let output = ""
     if(url == null){
-        output = 
-        <React.Fragment>
-            <Typography align="center" color='textPrimary' variant="h1">Meme #{id}</Typography> 
-            <div>{arr}</div>
-            <Grid container justify = "center">
-                <Button type="button" onClick={submit} variant="outlined" size="large"> Make Meme </Button>
-            </Grid>
-        </React.Fragment>
+        output = null;
     }else{
         output =
-            <div className={classes.imgContainer}>
+            <div style={{marginTop: 10}}>
                 <LazyLoad placeholder={<Loading />}>
-                    <img src={url} style={{marginLeft:'auto', marginRight:'auto'}} alt="Please refresh the page" />
+                    <img src={url} height={320} width={320} alt="meme"/>
                 </LazyLoad>
             </div>
     }
     return (
         <div className={classes.root}>
-            {output}
+            <Typography align="center" variant="h6" color="primary">Meme #{id}</Typography> 
+            <div>{arr}</div>
+            <Grid container justify = "center">
+                <Button type="button" onClick={submit} variant="outlined" size="large"> Make Meme </Button>
+            </Grid>
+            <Grid container justify = "center">
+                {output}
+            </Grid>
         </div>
     )
 }
