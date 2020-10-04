@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
 );
 
 function MemeCreate() {
-    let {id, boxes} = useParams();
+    let {name, id, boxes} = useParams();
     const classes = useStyles();
     const [textVals, _setTextVals] = useState(Array.apply(null, Array(parseInt(boxes))).map(function () {return ""}))
     const [url, setUrl] = useState(null)
@@ -51,7 +51,7 @@ function MemeCreate() {
     }
     return (
         <div className={classes.root}>
-            <Typography align="center" variant="h6" color="primary">Meme #{id}</Typography> 
+            <Typography align="center" variant="h6" color="primary">Meme #{id} - {name}</Typography> 
             <div>{arr}</div>
             <Grid container justify = "center">
                 <Button type="button" onClick={submit} variant="outlined" size="large"> Make Meme </Button>

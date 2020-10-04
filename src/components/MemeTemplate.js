@@ -29,7 +29,7 @@ function MemeTemplate(props) {
         <Grid item xs={12} sm={6} md={4} lg={3}>
             <LazyLoad placeholder={<Loading />}>
                 <Card className={classes.root}>
-                    <Link to= {"/"+props.id+"/"+props.boxes}>
+                    <Link to= {"/"+props.name+"/"+props.id+"/"+props.boxes}>
                     <CardActionArea>
                         <CardActions>
                             <CardContent className={`${classes.imgContainer} ${classes.center}`}>

@@ -43,7 +43,7 @@ function MemeTemplateGrid() {
             spacing={1}
             justify="center"
             alignItems="center">
-                {currentData.map((item)=>(<MemeTemplate key={item.id} imgUrl={item.url} boxes={item.box_count} id={item.id}/>))}     
+                {currentData.map((item)=>(<MemeTemplate key={item.id} imgUrl={item.url} boxes={item.box_count} id={item.id} name={item.name}/>))}     
             </Grid>
             
         </div>

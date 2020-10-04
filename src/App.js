@@ -15,7 +15,7 @@ function App() {
 			<Route exact path="/">
 				<MemeTemplateGrid />
 			</Route>
-			<Route exact path="/:id/:boxes">
+			<Route exact path="/:name/:id/:boxes">
 				<MemeCreate />
 			</Route>
 		</BrowserRouter>
