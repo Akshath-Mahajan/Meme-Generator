@@ -1,34 +1,38 @@
-import { ThemeProvider } from '@material-ui/core';
+import { CssBaseline, ThemeProvider } from '@material-ui/core';
 import React, {useState} from 'react';
 import { BrowserRouter, Redirect, Route } from 'react-router-dom';
 import MemeCreate from './components/MemeCreate';
 import MemeTemplateGrid from './components/MemeTemplateGrid';
 import theme from './Theme'
+import AuthRoute from './components/AuthRoute'
 import Header from './components/Header'
 import Footer from './components/Footer'
 import Login from './components/Login'
 import './index.css'
-import { UserContext } from './components/context';
+import { ImgContext, UserContext } from './components/context';
 
 function App() {
-	const [user, setUser] = useState(null)
+	const [user, setUser] = useState(localStorage.getItem('user'))
+	const [img, setImg]   = useState(null)
 	return (
-	<ThemeProvider theme={theme}>
-		<UserContext.Provider value={[user, setUser]}>
-			<Header />
-			<BrowserRouter>
-				<Route exact path="/">
-					{user?<MemeTemplateGrid />:<Login />}
-				</Route>
-				<Route exact path="/:name/:id/:boxes"
-				render={()=>user?
-				<MemeCreate />:
-				<Redirect to={{pathname:"/"}} />
-				}/>
-			</BrowserRouter>
-			<Footer />
-		</UserContext.Provider>
-	</ThemeProvider>
+	<UserContext.Provider value={[user, setUser]}>
+		<ImgContext.Provider value={[img, setImg]}>
+				<Header />
+				<BrowserRouter>
+					<Route exact path="/login">
+						<Login />
+					</Route>
+					<AuthRoute path="/">
+						<MemeTemplateGrid />
+					</AuthRoute>
+					<AuthRoute path="/:name/:id/:boxes" >
+						<MemeCreate />
+					</AuthRoute>
+				</BrowserRouter>
+				<Footer />
+		</ImgContext.Provider>
+	</UserContext.Provider>
+	
 	);
 }
 

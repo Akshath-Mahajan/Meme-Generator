@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useContext, useState } from 'react'
 import { Card, CardActionArea, CardActions, CardContent, CardMedia, Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
 import Loading from './Loading'
 import LazyLoad from 'react-lazyload';
+import { ImgContext } from './context';
 const useStyles = makeStyles((theme) => ({
     root: {
             backgroundColor: theme.palette.background.paper,
@@ -25,11 +26,12 @@ const useStyles = makeStyles((theme) => ({
 );
 function MemeTemplate(props) {
     const classes = useStyles();
+    const [img, setImg] = useContext(ImgContext);
     return (
         <Grid item xs={12} sm={6} md={4} lg={3}>
             <LazyLoad placeholder={<Loading />}>
                 <Card className={classes.root}>
-                    <Link to= {"/"+props.name+"/"+props.id+"/"+props.boxes}>
+                    <Link to= {"/"+props.name+"/"+props.id+"/"+props.boxes} onClick={() => setImg(props.imgUrl)}>
                     <CardActionArea>
                         <CardActions>
                             <CardContent className={`${classes.imgContainer} ${classes.center}`}>
@@ -41,6 +43,7 @@ function MemeTemplate(props) {
                 </Card>
             </LazyLoad>
         </Grid>
+        
     )
 }
 
